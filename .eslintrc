@@ -1,0 +1,43 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier", "react"],
+  "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "trailingComma": "es5"
+    }],
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx"]                                           // コンポーネントの拡張子として.js も許容
+    }],
+    "no-multi-spaces": ["error", {
+      "ignoreEOLComments": true,                                              // 行末コメントの複数スペースを許可
+      "exceptions": {
+        "ImportDeclaration": true                                             // import 文の複数スペースを許可
+      }
+    }],
+    "function-paren-newline": ["error", "consistent"],                        // 引数の改行フォーマットを統一
+    "jsx-a11y/label-has-for": ["error", {                                     // ラベル要素のバリデーションを調整
+      "required": {
+        "some": [ "nesting", "id" ]
+      }
+    }],
+    "jsx-a11y/anchor-is-valid": [ "error", {                                  // リンク要素のバリデーション設定に to を追加（react-router 対応）
+      "components": [ "Link" ],
+      "specialLink": [ "to", "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "./src"
+        ]
+      }
+    }
+  }
+}
