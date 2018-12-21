@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
+import Post from './components/pages/Post';
 
 export default function Router(props) {
   const { history } = props;
@@ -14,6 +15,7 @@ export default function Router(props) {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/blog" component={Blog} />
+        <Route exact path="/blog/:postId" component={Post} />
       </Switch>
     </ConnectedRouter>
   );

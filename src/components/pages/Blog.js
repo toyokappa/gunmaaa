@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -16,7 +17,11 @@ class Blog extends Component {
   render() {
     const { blog, isFetching } = this.props;
     const blogIndex = blog.posts.size
-      ? blog.posts.valueSeq().map(post => <div key={post.id}>{post.title}</div>)
+      ? blog.posts.valueSeq().map(post => (
+          <div key={post.id}>
+            <Link to={`/blog/${post.id}`}>{post.title}</Link>
+          </div>
+        ))
       : null;
     return (
       <BaseLayout isFetching={isFetching}>
