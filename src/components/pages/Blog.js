@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import rootActions from '../../actions';
 import BaseLayout from '../templates/BaseLayout';
+
+import BlogModel from '../../models/Blog';
 
 class Blog extends Component {
   componentDidMount() {
@@ -16,13 +19,19 @@ class Blog extends Component {
       ? blog.posts.valueSeq().map(post => <div key={post.id}>{post.title}</div>)
       : null;
     return (
-      <BaseLayout>
+      <BaseLayout isFetching={isFetching}>
         <h1>Blog</h1>
         {blogIndex}
       </BaseLayout>
     );
   }
 }
+
+Blog.propTypes = {
+  requestBlog: PropTypes.func.isRequired,
+  blog: PropTypes.instanceOf(BlogModel).isRequired,
+  isFetching: PropTypes.bool.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
