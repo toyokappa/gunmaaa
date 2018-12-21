@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import rootActions from '../../actions';
 import BaseLayout from '../templates/BaseLayout';
+import { Markdown } from '../atoms/Common';
 import PostModel from '../../models/Post';
 
 class Post extends Component {
@@ -33,7 +34,9 @@ class Post extends Component {
             {post.createdAt}
           </span>
         </div>
-        <div>{post.body}</div>
+        <div>
+          <Markdown body={post.body} />
+        </div>
       </BaseLayout>
     );
   }
