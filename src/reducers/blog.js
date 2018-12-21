@@ -39,7 +39,7 @@ export default handleActions(
 
     [rootActions.successBlog]: (state, { payload }) => ({
       ...state,
-      blog: getPostsFromApi(payload.blog.data.items),
+      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data.items) }),
       error: null,
       isFetching: false,
     }),
