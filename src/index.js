@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 
 import rootReducer from './reducers';
 import Home from './components/pages/Home';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(rootReducer);
+const history = createBrowserHistory();
+
+const middlewares = [routerMiddleware(history)];
+
+const store = createStore(
+  rootReducer(history),
+  applyMiddleware(...middlewares)
+);
 
 ReactDOM.render(
   <Provider store={store}>
