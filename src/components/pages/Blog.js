@@ -2,10 +2,10 @@ import React from 'react';
 
 import BaseLayout from '../templates/BaseLayout';
 
-export default function Home() {
+export default function Blog() {
   return (
     <BaseLayout>
-      <h1>Home</h1>
+      <h1>Blog</h1>
     </BaseLayout>
   );
 }
