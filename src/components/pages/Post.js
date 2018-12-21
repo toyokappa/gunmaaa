@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import rootActions from '../../actions';
+import PostModel from '../../models/Post';
+
 import BaseLayout from '../templates/BaseLayout';
 import { Markdown } from '../atoms/Common';
-import PostModel from '../../models/Post';
 
 class Post extends Component {
   componentDidMount() {
@@ -27,11 +29,11 @@ class Post extends Component {
         <div>
           <span>
             作成日:
-            {post.createdAt}
+            {moment(post.createdAt).format('YYYY.MM.DD HH:mm')}
           </span>
           <span>
             更新日:
-            {post.createdAt}
+            {moment(post.updatedAt).format('YYYY.MM.DD HH:mm')}
           </span>
         </div>
         <div>
