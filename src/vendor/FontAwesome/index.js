@@ -1,4 +1,4 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBlog } from '@fortawesome/free-solid-svg-icons';
+import { faBlog, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-library.add({ faBlog });
+library.add({ faBlog, faSpinner });

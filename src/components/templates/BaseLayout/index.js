@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { Loading } from '../../atoms/Common';
 import Sidebar from '../../organisms/Sidebar';
 
 export default function BaseLayout(props) {
@@ -10,8 +11,8 @@ export default function BaseLayout(props) {
   return (
     <BaseContainer>
       <Sidebar />
-      <Main>{children}</Main>
-      {isFetching ? <div>loading...</div> : null}
+      {isFetching ? null : <Main>{children}</Main>}
+      {isFetching ? <Loading /> : null}
     </BaseContainer>
   );
 }
