@@ -6,7 +6,7 @@ import RepoModel from '../models/Repo';
 import rootActions from '../actions';
 
 const defaultState = {
-  repos: new GithubModel(),
+  github: new GithubModel(),
   error: null,
   isFetching: false,
 };
@@ -41,14 +41,14 @@ export default handleActions(
 
     [rootActions.successGithub]: (state, { payload }) => ({
       ...state,
-      repos: new GithubModel(getReposFromApi(payload.repos)),
+      github: new GithubModel(getReposFromApi(payload.repos)),
       error: null,
       isFetching: false,
     }),
 
     [rootActions.requestGithub]: (state, { payload }) => ({
       ...state,
-      repos: new GithubModel(),
+      github: new GithubModel(),
       error: payload,
       isFetching: false,
     }),
