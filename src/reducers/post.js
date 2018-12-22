@@ -19,6 +19,10 @@ function getPostFromApi(post) {
   });
 }
 
+function getEyeCatchFromApi(eyeCatch, post) {
+  return post.set('eyeCatchUrl', eyeCatch.fields.file.url);
+}
+
 export default handleActions(
   {
     [rootActions.requestPost]: state => ({
@@ -34,6 +38,26 @@ export default handleActions(
     }),
 
     [rootActions.failurePost]: (state, { payload }) => ({
+      ...state,
+      post: new PostModel(),
+      error: payload,
+      isFetching: false,
+    }),
+
+    // XXX: 処理の実行順序(POST -> EYE_CATCH)が保証されない気がする
+    [rootActions.requestEyeCatch]: state => ({
+      ...state,
+      isFetching: true,
+    }),
+
+    [rootActions.successEyeCatch]: (state, { payload }) => ({
+      ...state,
+      post: getEyeCatchFromApi(payload.eyeCatch.data, state.post),
+      error: null,
+      isFetching: false,
+    }),
+
+    [rootActions.failureEyeCatch]: (state, { payload }) => ({
       ...state,
       post: new PostModel(),
       error: payload,

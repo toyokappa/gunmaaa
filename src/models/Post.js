@@ -4,6 +4,7 @@ const PostRecord = Record({
   id: null,
   title: '',
   body: '',
+  eyeCatchUrl: '',
   createdAt: null,
   updatedAt: null,
 });

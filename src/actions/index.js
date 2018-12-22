@@ -10,4 +10,9 @@ export default createActions({
   REQUEST_POST: postId => ({ postId }),
   SUCCESS_POST: post => ({ post }),
   FAILURE_POST: error => ({ error }),
+
+  // ブログのアイキャッチ
+  REQUEST_EYE_CATCH: assetId => ({ assetId }),
+  SUCCESS_EYE_CATCH: eyeCatch => ({ eyeCatch }),
+  FAILURE_EYE_CATCH: error => ({ error }),
 });

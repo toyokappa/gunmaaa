@@ -27,6 +27,7 @@ class Post extends Component {
     return (
       <BaseLayout isFetching={isFetching}>
         <h1>{post.title}</h1>
+        <EyeCatch src={post.eyeCatchUrl} alt="eye_catch" />
         <DateTimeArea>
           <CreatedAt>
             作成日:
@@ -53,6 +54,12 @@ Post.propTypes = {
   post: PropTypes.instanceOf(PostModel).isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
+
+const EyeCatch = styled.img`
+  display: block;
+  max-width: 100%;
+  margin-bottom: 1rem;
+`;
 
 const DateTimeArea = styled.div`
   text-align: right;
