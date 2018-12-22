@@ -7,6 +7,8 @@ import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
 import Post from './components/pages/Post';
 
+import './vendor/FontAwesome';
+
 export default function Router(props) {
   const { history } = props;
 
