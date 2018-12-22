@@ -8,8 +8,11 @@ export default function Sidebar() {
     <SideContainer>
       <Logo />
       <Nav>
-        <NavItem to="/blog" icon="blog">
+        <NavItem to="/blog" icon={['fas', 'blog']}>
           Blog
+        </NavItem>
+        <NavItem to="/github" icon={['fab', 'github']}>
+          GitHub
         </NavItem>
       </Nav>
     </SideContainer>

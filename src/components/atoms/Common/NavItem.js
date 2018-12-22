@@ -18,7 +18,7 @@ export default function NavItem(props) {
 
 NavItem.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
   children: PropTypes.node.isRequired,
 };
 
