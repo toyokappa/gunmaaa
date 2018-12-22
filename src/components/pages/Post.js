@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -26,19 +27,17 @@ class Post extends Component {
     return (
       <BaseLayout isFetching={isFetching}>
         <h1>{post.title}</h1>
-        <div>
-          <span>
+        <DateTimeArea>
+          <CreatedAt>
             作成日:
             {moment(post.createdAt).format('YYYY.MM.DD HH:mm')}
-          </span>
-          <span>
+          </CreatedAt>
+          <UpdatedAt>
             更新日:
             {moment(post.updatedAt).format('YYYY.MM.DD HH:mm')}
-          </span>
-        </div>
-        <div>
-          <Markdown body={post.body} />
-        </div>
+          </UpdatedAt>
+        </DateTimeArea>
+        <Markdown body={post.body} />
       </BaseLayout>
     );
   }
@@ -54,6 +53,19 @@ Post.propTypes = {
   post: PropTypes.instanceOf(PostModel).isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
+
+const DateTimeArea = styled.div`
+  text-align: right;
+`;
+
+const CreatedAt = styled.span`
+  font-size: 14px;
+  margin-right: 0.5rem;
+`;
+
+const UpdatedAt = styled.span`
+  font-size: 14px;
+`;
 
 function mapStateToProps(state) {
   return {
