@@ -20,7 +20,7 @@ class Github extends Component {
         {github.repos.size
           ? github.repos
               .valueSeq()
-              .map(repo => <div key={repo.id}>{repo.name}</div>)
+              .map(repo => <div key={repo.id}>{repo.fullName}</div>)
           : null}
       </BaseLayout>
     );

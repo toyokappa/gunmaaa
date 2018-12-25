@@ -26,10 +26,13 @@ function getReposFromApi(repos) {
   );
 
   const reposMap = repoModels.reduce(
-    (map, repo) => map.set(repo.pushed_at, repo),
+    (map, repo) => map.set(repo.pushedAt, repo),
     OrderedMap()
   );
-  return reposMap;
+
+  // プッシュした日付の降順でソート
+  const sortedReposMap = reposMap.sortBy((_v, k) => k).reverse();
+  return sortedReposMap;
 }
 
 export default handleActions(
@@ -41,7 +44,7 @@ export default handleActions(
 
     [rootActions.successGithub]: (state, { payload }) => ({
       ...state,
-      github: new GithubModel(getReposFromApi(payload.repos)),
+      github: new GithubModel({ repos: getReposFromApi(payload.repos.data) }),
       error: null,
       isFetching: false,
     }),
