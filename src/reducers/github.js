@@ -12,6 +12,7 @@ const defaultState = {
 };
 
 function getReposFromApi(repos) {
+  console.log(repos);
   const repoModels = repos.map(
     repo =>
       new RepoModel({
@@ -20,6 +21,10 @@ function getReposFromApi(repos) {
         fullName: repo.full_name,
         description: repo.description,
         url: repo.html_url,
+        language: repo.language,
+        forks_count: repo.forks_count,
+        stargazers_count: repo.stargazers_count,
+        watchers_count: repo.watchers_count,
         createdAt: repo.created_at,
         pushedAt: repo.pushed_at,
       })
