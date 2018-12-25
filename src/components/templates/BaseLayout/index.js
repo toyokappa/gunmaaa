@@ -19,7 +19,11 @@ export default function BaseLayout(props) {
 
 BaseLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
+};
+
+BaseLayout.defaultProps = {
+  isFetching: false,
 };
 
 const BaseContainer = styled.div`
