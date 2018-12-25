@@ -5,7 +5,7 @@ import * as githubApi from '../apis/githubApi';
 
 function* handleRequestGithub() {
   while (true) {
-    yield take('REQUEST_GITHUB');
+    yield take(rootActions.requestGithub);
     const { payload, error } = yield call(githubApi.getRepos);
     if (payload && !error) {
       yield put(rootActions.successGithub(payload));

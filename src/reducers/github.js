@@ -49,7 +49,7 @@ export default handleActions(
       isFetching: false,
     }),
 
-    [rootActions.requestGithub]: (state, { payload }) => ({
+    [rootActions.failureGithub]: (state, { payload }) => ({
       ...state,
       github: new GithubModel(),
       error: payload,

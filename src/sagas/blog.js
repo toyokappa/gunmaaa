@@ -5,7 +5,7 @@ import rootActions from '../actions';
 
 function* handleRequestBlog() {
   while (true) {
-    yield take('REQUEST_BLOG');
+    yield take(rootActions.requestBlog);
     const { payload, error } = yield call(ContentfulApi.getEntries);
     if (payload && !error) {
       yield put(rootActions.successBlog(payload));

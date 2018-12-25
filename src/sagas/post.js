@@ -5,7 +5,7 @@ import * as ContentfulApi from '../apis/contentfulApi';
 
 function* handleRequestPost() {
   while (true) {
-    const action = yield take('REQUEST_POST');
+    const action = yield take(rootActions.requestPost);
     const { postId } = action.payload;
     const { payload, error } = yield call(ContentfulApi.getEntry, postId);
     if (payload && !error) {
@@ -20,7 +20,7 @@ function* handleRequestPost() {
 
 function* handleRequestEyeCatch() {
   while (true) {
-    const action = yield take('REQUEST_EYE_CATCH');
+    const action = yield take(rootActions.requestEyeCatch);
     const { assetId } = action.payload;
     const { payload, error } = yield call(ContentfulApi.getAsset, assetId);
     if (payload && !error) {
