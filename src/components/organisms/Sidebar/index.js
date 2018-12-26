@@ -28,7 +28,8 @@ const SideContainer = styled.div`
   background-color: #263238;
   padding: 20px 10px;
   box-sizing: border-box;
-  box-shadow: 1px 0 1px rgba(0, 0, 0, 0.05), -1px 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 0 4px -1px rgba(0, 0, 0, 0.2), 4px 0 5px 0 rgba(0, 0, 0, 0.14),
+    1px 0 10px 0 rgba(0, 0, 0, 0.12);
 `;
 
 const Nav = styled.ul`

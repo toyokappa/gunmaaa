@@ -27,12 +27,13 @@ Repo.propTypes = {
 
 const Container = styled.div`
   width: 49.5%;
-  box-sizing: border-box;
+  background-color: white;
   padding: 20px;
-  border: 1px solid #263238;
   border-radius: 5px;
   margin-bottom: 1rem;
   margin-right: 1%;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
   &:nth-child(even) {
     margin-right: 0;

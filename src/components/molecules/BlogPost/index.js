@@ -42,11 +42,12 @@ BlogPost.propTypes = {
 
 const Container = styled.div`
   width: 32%;
-  box-sizing: border-box;
-  border: 1px solid #263238;
+  background-color: white;
   border-radius: 5px;
   margin-bottom: 1rem;
   margin-right: 2%;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
   &:nth-child(3) {
     margin-right: 0;
