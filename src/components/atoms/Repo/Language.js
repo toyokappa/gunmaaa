@@ -4,12 +4,15 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import RepoModel from '../../../models/Repo';
+import colors from '../../../vendor/GithubLangColor/colors.json';
 
 export default function Language(props) {
   const { repo } = props;
   const repoLang = repo.language ? (
     <RepoLang>
-      <FontAwesomeIcon icon={['fas', 'file-code']} />
+      <Icon langColor={colors[repo.language].color}>
+        <FontAwesomeIcon icon={['fas', 'file-code']} />
+      </Icon>
       <Text>{repo.language}</Text>
     </RepoLang>
   ) : null;
@@ -20,6 +23,10 @@ export default function Language(props) {
 Language.propTypes = {
   repo: PropTypes.instanceOf(RepoModel).isRequired,
 };
+
+const Icon = styled.span`
+  color: ${props => props.langColor || '#000'};
+`;
 
 const Text = styled.span`
   margin-left: 0.5rem;
