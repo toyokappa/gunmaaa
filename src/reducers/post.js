@@ -13,6 +13,7 @@ function getPostFromApi(post) {
   return new PostModel({
     id: post.sys.id,
     title: post.fields.title,
+    description: post.fields.description,
     body: post.fields.body,
     tags: post.fields.tags,
     createdAt: post.sys.createdAt,

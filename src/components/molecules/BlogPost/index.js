@@ -25,6 +25,7 @@ export default function BlogPost(props) {
           <Date>{moment(post.updatedAt).format('YYYY.MM.DD')}</Date>
         </PostUpdatedAt>
         <PostTitle to={`/blog/${post.id}`}>{post.title}</PostTitle>
+        <PostDesc>{post.description}</PostDesc>
         {postTags}
       </PostInfo>
     </Container>
@@ -76,7 +77,7 @@ const PostUpdatedAt = styled.span`
   display: inline-block;
   font-size: 11px;
   background-color: #eee;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 `;
@@ -91,6 +92,12 @@ const PostTitle = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
+  margin-bottom: 0.5rem;
+`;
+
+const PostDesc = styled.div`
+  font-size: 13px;
+  line-height: 1.5;
   margin-bottom: 0.75rem;
 `;
 
@@ -98,7 +105,7 @@ const PostTag = styled.div`
   display: inline-block;
   font-size: 11px;
   background-color: #eee;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
   margin-right: 0.5rem;
 `;
