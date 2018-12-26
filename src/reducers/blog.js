@@ -30,7 +30,8 @@ function getPostsFromApi(posts) {
     (map, post) => map.set(post.createdAt, post),
     OrderedMap()
   );
-  return postsMap;
+  const sortedPostsMap = postsMap.sortBy((_v, k) => k).reverse();
+  return sortedPostsMap;
 }
 
 export default handleActions(
