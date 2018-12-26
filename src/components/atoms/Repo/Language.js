@@ -7,13 +7,14 @@ import RepoModel from '../../../models/Repo';
 
 export default function Language(props) {
   const { repo } = props;
-
-  return (
+  const repoLang = repo.language ? (
     <RepoLang>
       <FontAwesomeIcon icon={['fas', 'file-code']} />
       <Text>{repo.language}</Text>
     </RepoLang>
-  );
+  ) : null;
+
+  return repoLang;
 }
 
 Language.propTypes = {
@@ -24,6 +25,4 @@ const Text = styled.span`
   margin-left: 0.5rem;
 `;
 
-const RepoLang = styled.div`
-  margin-right: auto;
-`;
+const RepoLang = styled.div``;

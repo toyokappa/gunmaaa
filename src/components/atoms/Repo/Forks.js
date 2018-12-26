@@ -26,4 +26,5 @@ const Text = styled.span`
 
 const RepoForks = styled.div`
   margin-right: 1rem;
+  margin-left: auto;
 `;
