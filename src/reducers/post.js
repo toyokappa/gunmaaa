@@ -12,6 +12,7 @@ const defaultState = {
 function getPostFromApi(post) {
   return new PostModel({
     id: post.sys.id,
+    slug: post.fields.slug,
     title: post.fields.title,
     description: post.fields.description,
     body: post.fields.body,
@@ -34,7 +35,7 @@ export default handleActions(
 
     [rootActions.successPost]: (state, { payload }) => ({
       ...state,
-      post: getPostFromApi(payload.post.data),
+      post: getPostFromApi(payload.post),
       error: null,
       isFetching: false,
     }),

@@ -13,12 +13,12 @@ import { Markdown } from '../atoms/Common';
 class Post extends Component {
   componentDidMount() {
     const { requestPost } = this.props;
-    requestPost(this.getPostIdFromUrl());
+    requestPost(this.getPostSlugFromUrl());
   }
 
-  getPostIdFromUrl() {
+  getPostSlugFromUrl() {
     const { match } = this.props;
-    return match.params.postId;
+    return match.params.postSlug;
   }
 
   render() {
@@ -47,7 +47,7 @@ class Post extends Component {
 Post.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      postId: PropTypes.string,
+      postSlug: PropTypes.string,
     }),
   }).isRequired,
   requestPost: PropTypes.func.isRequired,

@@ -6,10 +6,10 @@ import * as ContentfulApi from '../apis/contentfulApi';
 function* handleRequestPost() {
   while (true) {
     const action = yield take(rootActions.requestPost);
-    const { postId } = action.payload;
-    const { payload, error } = yield call(ContentfulApi.getEntry, postId);
+    const { postSlug } = action.payload;
+    const { payload, error } = yield call(ContentfulApi.getEntry, postSlug);
     if (payload && !error) {
-      const assetId = payload.data.fields.eyeCatch.sys.id;
+      const assetId = payload.fields.eyeCatch.sys.id;
       yield put(rootActions.successPost(payload));
       yield put(rootActions.requestEyeCatch(assetId));
     } else {

@@ -2,6 +2,7 @@ import { Record } from 'immutable';
 
 const PostRecord = Record({
   id: null,
+  slug: '',
   title: '',
   description: '',
   body: '',

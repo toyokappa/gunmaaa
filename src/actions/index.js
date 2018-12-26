@@ -7,7 +7,7 @@ export default createActions({
   FAILURE_BLOG: error => ({ error }),
 
   // ブログ記事
-  REQUEST_POST: postId => ({ postId }),
+  REQUEST_POST: postSlug => ({ postSlug }),
   SUCCESS_POST: post => ({ post }),
   FAILURE_POST: error => ({ error }),
 

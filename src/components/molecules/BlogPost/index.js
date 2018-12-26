@@ -14,7 +14,7 @@ export default function BlogPost(props) {
 
   return (
     <Container>
-      <EyeCatch to={`/blog/${post.id}`} />
+      <EyeCatch to={`/blog/${post.slug}`} />
       <PostInfo>
         <PostCreatedAt>
           <FontAwesomeIcon icon={['fas', 'pencil-alt']} />
@@ -24,7 +24,7 @@ export default function BlogPost(props) {
           <FontAwesomeIcon icon={['fas', 'sync-alt']} />
           <Date>{moment(post.updatedAt).format('YYYY.MM.DD')}</Date>
         </PostUpdatedAt>
-        <PostTitle to={`/blog/${post.id}`}>{post.title}</PostTitle>
+        <PostTitle to={`/blog/${post.slug}`}>{post.title}</PostTitle>
         <PostDesc>{post.description}</PostDesc>
         {postTags}
       </PostInfo>

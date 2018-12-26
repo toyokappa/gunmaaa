@@ -15,12 +15,13 @@ export function getEntries() {
     .catch(error => ({ error }));
 }
 
-export function getEntry(entryId) {
-  const url = `${apiBase}spaces/${spaceId}/entries/${entryId}`;
+export function getEntry(slug) {
+  const url = `${apiBase}spaces/${spaceId}/entries?content_type=blogPost&fields.slug=${slug}`;
   return axios
     .get(url, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
+    .then(res => res.data.items[0])
     .then(payload => ({ payload }))
     .catch(error => ({ error }));
 }

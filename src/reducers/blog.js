@@ -16,6 +16,7 @@ function getPostsFromApi(posts) {
     post =>
       new PostModel({
         id: post.sys.id,
+        slug: post.fields.slug,
         title: post.fields.title,
         description: post.fields.description,
         body: post.fields.body,
