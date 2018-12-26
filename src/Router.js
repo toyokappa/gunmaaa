@@ -19,6 +19,7 @@ export default function Router(props) {
         <Route exact path="/" component={Home} />
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/blog/:postSlug" component={Post} />
+        <Route exact path="/blog/tags/:postTag" component={Blog} />
         <Route exact path="/github" component={Github} />
       </Switch>
     </ConnectedRouter>

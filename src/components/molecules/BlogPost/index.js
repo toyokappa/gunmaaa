@@ -9,8 +9,12 @@ import PostModel from '../../../models/Post';
 
 export default function BlogPost(props) {
   const { post } = props;
-  // eslint-disable-next-line react/no-array-index-key
-  const postTags = post.tags.map((tag, i) => <PostTag key={i}>{tag}</PostTag>);
+  const postTags = post.tags.map((tag, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <PostTag to={`/blog/tags/${tag}`} key={i}>
+      {tag}
+    </PostTag>
+  ));
 
   return (
     <Container>
@@ -101,10 +105,12 @@ const PostDesc = styled.div`
   margin-bottom: 0.75rem;
 `;
 
-const PostTag = styled.div`
+const PostTag = styled(Link)`
   display: inline-block;
   font-size: 11px;
+  color: black;
   background-color: #eee;
+  text-decoration: none;
   padding: 5px 10px;
   border-radius: 10px;
   margin-right: 0.5rem;

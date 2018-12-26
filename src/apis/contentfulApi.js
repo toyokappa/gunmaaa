@@ -15,6 +15,16 @@ export function getEntries() {
     .catch(error => ({ error }));
 }
 
+export function getEntriesWithTag(tag) {
+  const url = `${apiBase}spaces/${spaceId}/entries?content_type=blogPost&fields.tags=${tag}`;
+  return axios
+    .get(url, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    })
+    .then(payload => ({ payload }))
+    .catch(error => ({ error }));
+}
+
 export function getEntry(slug) {
   const url = `${apiBase}spaces/${spaceId}/entries?content_type=blogPost&fields.slug=${slug}`;
   return axios

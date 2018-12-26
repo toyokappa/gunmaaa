@@ -10,8 +10,24 @@ import BlogModel from '../../models/Blog';
 
 class Blog extends Component {
   componentDidMount() {
-    const { requestBlog } = this.props;
-    requestBlog();
+    this.parseBlog();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+    if (prevProps.location.pathname === location.pathname) return;
+
+    this.parseBlog();
+  }
+
+  parseBlog() {
+    const { match, requestBlog, requestBlogWithTag } = this.props;
+    const { postTag } = match.params;
+    if (postTag) {
+      requestBlogWithTag(postTag);
+    } else {
+      requestBlog();
+    }
   }
 
   render() {
@@ -27,7 +43,16 @@ class Blog extends Component {
 }
 
 Blog.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      postTag: PropTypes.string,
+    }),
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
   requestBlog: PropTypes.func.isRequired,
+  requestBlogWithTag: PropTypes.func.isRequired,
   blog: PropTypes.instanceOf(BlogModel).isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
@@ -44,6 +69,10 @@ function mapDispatchtoProps(dispatch) {
   return {
     requestBlog: () => {
       dispatch(rootActions.requestBlog());
+    },
+
+    requestBlogWithTag: postTag => {
+      dispatch(rootActions.requestBlogWithTag(postTag));
     },
   };
 }

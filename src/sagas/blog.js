@@ -15,6 +15,23 @@ function* handleRequestBlog() {
   }
 }
 
+function* handleRequestBlogWithTag() {
+  while (true) {
+    const action = yield take(rootActions.requestBlogWithTag);
+    const { postTag } = action.payload;
+    const { payload, error } = yield call(
+      ContentfulApi.getEntriesWithTag,
+      postTag
+    );
+    if (payload && !error) {
+      yield put(rootActions.successBlogWithTag(payload));
+    } else {
+      yield put(rootActions.failureBlogWithTag(error));
+    }
+  }
+}
+
 export default function* rootSaga() {
   yield fork(handleRequestBlog);
+  yield fork(handleRequestBlogWithTag);
 }

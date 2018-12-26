@@ -53,6 +53,25 @@ export default handleActions(
       error: payload,
       isFetching: false,
     }),
+
+    [rootActions.requestBlogWithTag]: state => ({
+      ...state,
+      isFetching: true,
+    }),
+
+    [rootActions.successBlogWithTag]: (state, { payload }) => ({
+      ...state,
+      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data.items) }),
+      error: null,
+      isFetching: false,
+    }),
+
+    [rootActions.failureBlogWithTag]: (state, { payload }) => ({
+      ...state,
+      blog: new BlogModel(),
+      error: payload,
+      isFetching: false,
+    }),
   },
   defaultState
 );
