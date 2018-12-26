@@ -24,6 +24,4 @@ const Text = styled.span`
   margin-left: 0.5rem;
 `;
 
-const RepoStars = styled.div`
-  margin-right: 1rem;
-`;
+const RepoStars = styled.div``;

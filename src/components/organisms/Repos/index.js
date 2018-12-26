@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { OrderedMap } from 'immutable';
 
 import Repo from '../../molecules/Repo';
-import GithubModel from '../../../models/Github';
 
 export default function Repos(props) {
   const { repos } = props;
@@ -18,7 +18,7 @@ export default function Repos(props) {
 }
 
 Repos.propTypes = {
-  repos: PropTypes.instanceOf(GithubModel).isRequired,
+  repos: PropTypes.instanceOf(OrderedMap).isRequired,
 };
 
 const Repositories = styled.div`

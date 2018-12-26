@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {
-  Name,
-  Description,
-  Language,
-  Forks,
-  Stars,
-  Watchers,
-} from '../../atoms/Repo';
+import { Name, Description, Language, Forks, Stars } from '../../atoms/Repo';
 import RepoModel from '../../../models/Repo';
 
 export default function Repo(props) {
@@ -23,7 +16,6 @@ export default function Repo(props) {
         <Language repo={repo} />
         <Forks repo={repo} />
         <Stars repo={repo} />
-        <Watchers repo={repo} />
       </RepoInfo>
     </Container>
   );
