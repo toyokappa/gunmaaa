@@ -7,7 +7,7 @@ import RepoModel from '../../../models/Repo';
 export default function Description(props) {
   const { repo } = props;
 
-  return <RepoDesc>{repo.name}</RepoDesc>;
+  return <RepoDesc>{repo.description}</RepoDesc>;
 }
 
 Description.propTypes = {
