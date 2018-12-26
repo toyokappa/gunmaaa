@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import rootActions from '../../actions';
 import BaseLayout from '../templates/BaseLayout';
+import BlogPosts from '../organisms/BlogPosts';
 
 import BlogModel from '../../models/Blog';
 
@@ -16,17 +16,11 @@ class Blog extends Component {
 
   render() {
     const { blog, isFetching } = this.props;
-    const blogIndex = blog.posts.size
-      ? blog.posts.valueSeq().map(post => (
-          <div key={post.id}>
-            <Link to={`/blog/${post.id}`}>{post.title}</Link>
-          </div>
-        ))
-      : null;
+
     return (
       <BaseLayout isFetching={isFetching}>
         <h1>Blog</h1>
-        {blogIndex}
+        <BlogPosts posts={blog.posts} />
       </BaseLayout>
     );
   }
