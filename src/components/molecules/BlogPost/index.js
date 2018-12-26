@@ -9,6 +9,8 @@ import PostModel from '../../../models/Post';
 
 export default function BlogPost(props) {
   const { post } = props;
+  // eslint-disable-next-line react/no-array-index-key
+  const postTags = post.tags.map((tag, i) => <PostTag key={i}>{tag}</PostTag>);
 
   return (
     <Container>
@@ -23,6 +25,7 @@ export default function BlogPost(props) {
           <Date>{moment(post.updatedAt).format('YYYY.MM.DD')}</Date>
         </PostUpdatedAt>
         <PostTitle to={`/blog/${post.id}`}>{post.title}</PostTitle>
+        {postTags}
       </PostInfo>
     </Container>
   );
@@ -88,4 +91,14 @@ const PostTitle = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
+  margin-bottom: 0.75rem;
+`;
+
+const PostTag = styled.div`
+  display: inline-block;
+  font-size: 11px;
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 0.5rem;
 `;
