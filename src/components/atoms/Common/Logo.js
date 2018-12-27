@@ -11,9 +11,12 @@ export default function Logo() {
 }
 
 const Title = styled.h1`
-  margin: 0;
-  font-size: 24px;
+  @import url('https://fonts.googleapis.com/css?family=Fugaz+One');
+
+  font-size: 30px;
+  font-family: 'Fugaz One', cursive;
   line-height: 1;
+  margin: 0;
 
   & > a {
     color: white;

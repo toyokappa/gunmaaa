@@ -6,4 +6,8 @@ import normalize from 'styled-normalize';
 // ------------------------------------------------------------
 export const BaseStyles = createGlobalStyle`
   ${normalize}
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Yu Gothic", YuGothic, sans-serif;
+  }
 `;

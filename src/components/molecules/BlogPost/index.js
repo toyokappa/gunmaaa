@@ -60,7 +60,7 @@ const PostInfo = styled.div`
 `;
 
 const PostDate = styled.div`
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 `;
 
 const PostTitle = styled(Link)`

@@ -89,19 +89,20 @@ const PostHeader = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const PostBody = styled.div``;
-
 const PostDate = styled.div`
   margin-bottom: 0.75rem;
 `;
 
 const PostTitle = styled.h1`
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
 `;
 
 const PostDesc = styled.div`
+  line-height: 1.5;
   margin-bottom: 1rem;
 `;
+
+const PostBody = styled.div``;
 
 const PostTags = styled.div``;
 

@@ -26,8 +26,41 @@ Markdown.propTypes = {
 };
 
 const MarkdownBody = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.5;
+    & > code {
+      color: #00bfa5;
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 2px;
+      margin: 0 2px;
+    }
+  }
+
+  a {
+    color: #009688;
+  }
+
+  li {
+    line-height: 2;
+  }
+
   img {
     max-width: 100%;
+  }
+
+  pre {
+    line-height: 1.3;
   }
 `;
 
