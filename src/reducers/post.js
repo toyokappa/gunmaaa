@@ -9,21 +9,21 @@ const defaultState = {
   isFetching: false,
 };
 
-function getPostFromApi(post) {
+function getPostFromApi(data) {
+  const post = data.items[0];
+  const asset = data.includes.Asset[0];
+
   return new PostModel({
     id: post.sys.id,
     slug: post.fields.slug,
     title: post.fields.title,
+    eyeCatchUrl: asset.fields.file.url,
     description: post.fields.description,
     body: post.fields.body,
     tags: post.fields.tags,
     createdAt: post.sys.createdAt,
     updatedAt: post.sys.updatedAt,
   });
-}
-
-function getEyeCatchFromApi(eyeCatch, post) {
-  return post.set('eyeCatchUrl', eyeCatch.fields.file.url);
 }
 
 export default handleActions(
@@ -35,32 +35,12 @@ export default handleActions(
 
     [rootActions.successPost]: (state, { payload }) => ({
       ...state,
-      post: getPostFromApi(payload.post),
+      post: getPostFromApi(payload.post.data),
       error: null,
       isFetching: false,
     }),
 
     [rootActions.failurePost]: (state, { payload }) => ({
-      ...state,
-      post: new PostModel(),
-      error: payload,
-      isFetching: false,
-    }),
-
-    // XXX: 処理の実行順序(POST -> EYE_CATCH)が保証されない気がする
-    [rootActions.requestEyeCatch]: state => ({
-      ...state,
-      isFetching: true,
-    }),
-
-    [rootActions.successEyeCatch]: (state, { payload }) => ({
-      ...state,
-      post: getEyeCatchFromApi(payload.eyeCatch.data, state.post),
-      error: null,
-      isFetching: false,
-    }),
-
-    [rootActions.failureEyeCatch]: (state, { payload }) => ({
       ...state,
       post: new PostModel(),
       error: payload,

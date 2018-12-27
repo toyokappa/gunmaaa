@@ -9,29 +9,13 @@ function* handleRequestPost() {
     const { postSlug } = action.payload;
     const { payload, error } = yield call(ContentfulApi.getEntry, postSlug);
     if (payload && !error) {
-      const assetId = payload.fields.eyeCatch.sys.id;
       yield put(rootActions.successPost(payload));
-      yield put(rootActions.requestEyeCatch(assetId));
     } else {
       yield put(rootActions.failurePost(error));
     }
   }
 }
 
-function* handleRequestEyeCatch() {
-  while (true) {
-    const action = yield take(rootActions.requestEyeCatch);
-    const { assetId } = action.payload;
-    const { payload, error } = yield call(ContentfulApi.getAsset, assetId);
-    if (payload && !error) {
-      yield put(rootActions.successEyeCatch(payload));
-    } else {
-      yield put(rootActions.failureEyeCatch(error));
-    }
-  }
-}
-
 export default function* rootSaga() {
   yield fork(handleRequestPost);
-  yield fork(handleRequestEyeCatch);
 }

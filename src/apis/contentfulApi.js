@@ -31,17 +31,6 @@ export function getEntry(slug) {
     .get(url, {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
-    .then(res => res.data.items[0])
-    .then(payload => ({ payload }))
-    .catch(error => ({ error }));
-}
-
-export function getAsset(assetId) {
-  const url = `${apiBase}spaces/${spaceId}/assets/${assetId}`;
-  return axios
-    .get(url, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
     .then(payload => ({ payload }))
     .catch(error => ({ error }));
 }
