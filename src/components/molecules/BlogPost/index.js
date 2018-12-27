@@ -2,32 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
 
+import { CreatedAt, UpdatedAt, Tag } from '../../atoms/BlogPost';
 import PostModel from '../../../models/Post';
 
 export default function BlogPost(props) {
   const { post } = props;
-  const postTags = post.tags.map((tag, i) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <PostTag to={`/blog/tags/${tag}`} key={i}>
-      {tag}
-    </PostTag>
-  ));
+  // eslint-disable-next-line react/no-array-index-key
+  const postTags = post.tags.map((tag, i) => <Tag tag={tag} key={i} />);
 
   return (
     <Container>
       <EyeCatch to={`/blog/${post.slug}`} src={post.eyeCatchUrl} />
       <PostInfo>
-        <PostCreatedAt>
-          <FontAwesomeIcon icon={['fas', 'pencil-alt']} />
-          <Date>{moment(post.createdAt).format('YYYY.MM.DD')}</Date>
-        </PostCreatedAt>
-        <PostUpdatedAt>
-          <FontAwesomeIcon icon={['fas', 'sync-alt']} />
-          <Date>{moment(post.updatedAt).format('YYYY.MM.DD')}</Date>
-        </PostUpdatedAt>
+        <PostDate>
+          <CreatedAt datetime={post.createdAt} />
+          <UpdatedAt datetime={post.updatedAt} />
+        </PostDate>
         <PostTitle to={`/blog/${post.slug}`}>{post.title}</PostTitle>
         <PostDesc>{post.description}</PostDesc>
         {postTags}
@@ -68,27 +59,8 @@ const PostInfo = styled.div`
   padding: 20px;
 `;
 
-const PostCreatedAt = styled.span`
-  display: inline-block;
-  font-size: 11px;
-  background-color: #eee;
-  padding: 5px;
-  border-radius: 10px;
-  margin-right: 0.5rem;
+const PostDate = styled.div`
   margin-bottom: 0.5rem;
-`;
-
-const PostUpdatedAt = styled.span`
-  display: inline-block;
-  font-size: 11px;
-  background-color: #eee;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-`;
-
-const Date = styled.span`
-  margin-left: 0.25rem;
 `;
 
 const PostTitle = styled(Link)`
@@ -104,15 +76,4 @@ const PostDesc = styled.div`
   font-size: 13px;
   line-height: 1.5;
   margin-bottom: 0.75rem;
-`;
-
-const PostTag = styled(Link)`
-  display: inline-block;
-  font-size: 11px;
-  color: black;
-  background-color: #eee;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-right: 0.5rem;
 `;
