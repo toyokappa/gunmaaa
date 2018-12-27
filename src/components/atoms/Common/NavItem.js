@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function NavItem(props) {
-  const { to, icon, children } = props;
+  const { isActive, to, icon, children } = props;
+  console.log(isActive);
   return (
-    <Item>
+    <Item isActive={isActive}>
       <Link to={to}>
         <FontAwesomeIcon icon={icon} />
         <NavText>{children}</NavText>
@@ -17,6 +18,7 @@ export default function NavItem(props) {
 }
 
 NavItem.propTypes = {
+  isActive: PropTypes.bool.isRequired,
   to: PropTypes.string.isRequired,
   icon: PropTypes.arrayOf(PropTypes.string).isRequired,
   children: PropTypes.node.isRequired,
@@ -26,8 +28,14 @@ const Item = styled.li`
   & > a {
     display: block;
     color: white;
+    background-color: ${props => (props.isActive ? '#00BFA5' : 'none')};
     text-decoration: none;
-    padding: 10px 0;
+    padding: 20px;
+    transition-duration: 0.5s;
+    &:hover {
+      background-color: ${props =>
+        props.isActive ? '#00BFA5' : 'rgba(255, 255, 255, 0.1)'};
+    }
   }
 `;
 

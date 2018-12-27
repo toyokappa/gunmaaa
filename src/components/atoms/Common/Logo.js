@@ -16,7 +16,7 @@ const Title = styled.h1`
   font-size: 30px;
   font-family: 'Fugaz One', cursive;
   line-height: 1;
-  margin: 0;
+  margin: 0 20px;
 
   & > a {
     color: white;

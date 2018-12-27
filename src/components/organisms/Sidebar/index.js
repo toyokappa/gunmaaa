@@ -8,10 +8,18 @@ export default function Sidebar() {
     <SideContainer>
       <Logo />
       <Nav>
-        <NavItem to="/blog" icon={['fas', 'blog']}>
+        <NavItem
+          isActive={/^\/blog/.test(window.location.pathname)}
+          to="/blog"
+          icon={['fas', 'blog']}
+        >
           Blog
         </NavItem>
-        <NavItem to="/github" icon={['fab', 'github']}>
+        <NavItem
+          isActive={/^\/github/.test(window.location.pathname)}
+          to="/github"
+          icon={['fab', 'github']}
+        >
           GitHub
         </NavItem>
       </Nav>
@@ -26,7 +34,7 @@ const SideContainer = styled.div`
   width: 16rem;
   height: 100vh;
   background-color: #263238;
-  padding: 20px 10px;
+  padding: 20px 0;
   box-sizing: border-box;
   box-shadow: 2px 0 4px -1px rgba(0, 0, 0, 0.2), 4px 0 5px 0 rgba(0, 0, 0, 0.14),
     1px 0 10px 0 rgba(0, 0, 0, 0.12);
