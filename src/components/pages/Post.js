@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import rootActions from '../../actions';
 import PostModel from '../../models/Post';
 
 import BaseLayout from '../templates/BaseLayout';
+import { CreatedAt, UpdatedAt, Tag } from '../atoms/BlogPost';
 import { Markdown } from '../atoms/Common';
 
 class Post extends Component {
@@ -23,22 +23,28 @@ class Post extends Component {
 
   render() {
     const { post, isFetching } = this.props;
+    // eslint-disable-next-line react/no-array-index-key
+    const postTags = post.tags.map((tag, i) => <Tag tag={tag} key={i} />);
 
     return (
       <BaseLayout isFetching={isFetching}>
-        <h1>{post.title}</h1>
-        <EyeCatch src={post.eyeCatchUrl} alt="eye_catch" />
-        <DateTimeArea>
-          <CreatedAt>
-            作成日:
-            {moment(post.createdAt).format('YYYY.MM.DD HH:mm')}
-          </CreatedAt>
-          <UpdatedAt>
-            更新日:
-            {moment(post.updatedAt).format('YYYY.MM.DD HH:mm')}
-          </UpdatedAt>
-        </DateTimeArea>
-        <Markdown body={post.body} />
+        <PostContainer>
+          <EyeCatch src={post.eyeCatchUrl} />
+          <PostContent>
+            <PostHeader>
+              <PostDate>
+                <CreatedAt datetime={post.createdAt} />
+                <UpdatedAt datetime={post.updatedAt} />
+              </PostDate>
+              <PostTitle>{post.title}</PostTitle>
+              <PostDesc>{post.description}</PostDesc>
+              <PostTags>{postTags}</PostTags>
+            </PostHeader>
+            <PostBody>
+              <Markdown body={post.body} />
+            </PostBody>
+          </PostContent>
+        </PostContainer>
       </BaseLayout>
     );
   }
@@ -55,24 +61,49 @@ Post.propTypes = {
   isFetching: PropTypes.bool.isRequired,
 };
 
-const EyeCatch = styled.img`
+const PostContainer = styled.div`
+  width: 75%;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 8px;
+  margin: 1.5rem auto;
+`;
+
+const EyeCatch = styled.div`
   display: block;
-  max-width: 100%;
+  width: 100%;
+  height: 500px;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center center;
+  border-radius: 7px 7px 0 0;
+`;
+
+const PostContent = styled.div`
+  padding: 0 30px 30px;
+`;
+
+const PostHeader = styled.div`
+  padding: 1.5rem 0;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 1.5rem;
+`;
+
+const PostBody = styled.div``;
+
+const PostDate = styled.div`
+  margin-bottom: 0.75rem;
+`;
+
+const PostTitle = styled.h1`
+  margin: 0 0 1rem;
+`;
+
+const PostDesc = styled.div`
   margin-bottom: 1rem;
 `;
 
-const DateTimeArea = styled.div`
-  text-align: right;
-`;
-
-const CreatedAt = styled.span`
-  font-size: 14px;
-  margin-right: 0.5rem;
-`;
-
-const UpdatedAt = styled.span`
-  font-size: 14px;
-`;
+const PostTags = styled.div``;
 
 function mapStateToProps(state) {
   return {

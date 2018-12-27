@@ -23,7 +23,7 @@ const PostUpdatedAt = styled.span`
   display: inline-block;
   font-size: 11px;
   background-color: #eee;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
 `;
 
