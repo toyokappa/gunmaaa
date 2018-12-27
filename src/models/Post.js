@@ -8,8 +8,8 @@ const PostRecord = Record({
   body: '',
   eyeCatchUrl: '',
   tags: [],
-  createdAt: null,
-  updatedAt: null,
+  createdAt: '',
+  updatedAt: '',
 });
 
 export default class Post extends PostRecord {}
