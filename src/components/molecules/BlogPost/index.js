@@ -18,7 +18,7 @@ export default function BlogPost(props) {
 
   return (
     <Container>
-      <EyeCatch to={`/blog/${post.slug}`} />
+      <EyeCatch to={`/blog/${post.slug}`} src={post.eyeCatchUrl} />
       <PostInfo>
         <PostCreatedAt>
           <FontAwesomeIcon icon={['fas', 'pencil-alt']} />
@@ -58,7 +58,7 @@ const EyeCatch = styled(Link)`
   display: block;
   width: 100%;
   height: 200px;
-  background-image: url('https://liginc.co.jp/wp-content/uploads/2014/11/win-mac-a1.jpg');
+  background-image: url(${props => props.src});
   background-size: cover;
   background-position: center center;
   border-radius: 4px 4px 0 0;

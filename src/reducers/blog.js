@@ -11,20 +11,26 @@ const defaultState = {
   isFetching: false,
 };
 
-function getPostsFromApi(posts) {
-  const postModels = posts.map(
-    post =>
-      new PostModel({
-        id: post.sys.id,
-        slug: post.fields.slug,
-        title: post.fields.title,
-        description: post.fields.description,
-        body: post.fields.body,
-        tags: post.fields.tags,
-        createdAt: post.sys.createdAt,
-        updatedAt: post.sys.updatedAt,
-      })
-  );
+function getPostsFromApi(data) {
+  const posts = data.items;
+  const assets = data.includes.Asset;
+
+  const postModels = posts.map(post => {
+    const eyeCatchId = post.fields.eyeCatch.sys.id;
+    const asset = assets.find(a => a.sys.id === eyeCatchId);
+
+    return new PostModel({
+      id: post.sys.id,
+      slug: post.fields.slug,
+      title: post.fields.title,
+      eyeCatchUrl: asset.fields.file.url,
+      description: post.fields.description,
+      body: post.fields.body,
+      tags: post.fields.tags,
+      createdAt: post.sys.createdAt,
+      updatedAt: post.sys.updatedAt,
+    });
+  });
 
   const postsMap = postModels.reduce(
     (map, post) => map.set(post.createdAt, post),
@@ -43,7 +49,7 @@ export default handleActions(
 
     [rootActions.successBlog]: (state, { payload }) => ({
       ...state,
-      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data.items) }),
+      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data) }),
       error: null,
       isFetching: false,
     }),
@@ -62,7 +68,7 @@ export default handleActions(
 
     [rootActions.successBlogWithTag]: (state, { payload }) => ({
       ...state,
-      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data.items) }),
+      blog: new BlogModel({ posts: getPostsFromApi(payload.blog.data) }),
       error: null,
       isFetching: false,
     }),
