@@ -41,7 +41,7 @@ const MarkdownBody = styled.div`
     & > code {
       color: #00bfa5;
       background-color: #eee;
-      padding: 2px 4px;
+      padding: 0 4px;
       border-radius: 2px;
       margin: 0 2px;
     }
@@ -52,7 +52,8 @@ const MarkdownBody = styled.div`
   }
 
   li {
-    line-height: 2;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
   }
 
   img {

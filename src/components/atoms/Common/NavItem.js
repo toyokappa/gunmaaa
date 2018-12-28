@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 export default function NavItem(props) {
   const { isActive, to, icon, children } = props;
-  console.log(isActive);
   return (
     <Item isActive={isActive}>
       <Link to={to}>
