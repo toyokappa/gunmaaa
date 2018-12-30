@@ -6,7 +6,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import Home from './components/pages/Home';
 import Blog from './components/pages/Blog';
 import Post from './components/pages/Post';
-import Github from './components/pages/Github';
 
 import './vendor/FontAwesome';
 
@@ -20,7 +19,6 @@ export default function Router(props) {
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/blog/:postSlug" component={Post} />
         <Route exact path="/blog/tags/:postTag" component={Blog} />
-        <Route exact path="/github" component={Github} />
       </Switch>
     </ConnectedRouter>
   );

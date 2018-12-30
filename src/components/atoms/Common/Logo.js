@@ -1,25 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default function Logo() {
+export default function Logo(props) {
+  const { size, color } = props;
   return (
-    <Title>
-      <Link to="/">Gunmaaa!!!</Link>
+    <Title size={size} color={color}>
+      Gunmaaa!!!
     </Title>
   );
 }
 
+Logo.propTypes = {
+  size: PropTypes.string,
+  color: PropTypes.string,
+};
+
+Logo.defaultProps = {
+  size: 30,
+  color: '#fff',
+};
+
 const Title = styled.h1`
   @import url('https://fonts.googleapis.com/css?family=Fugaz+One');
 
-  font-size: 30px;
+  font-size: ${props => props.size}px;
   font-family: 'Fugaz One', cursive;
   line-height: 1;
-  margin: 0 20px;
-
-  & > a {
-    color: white;
-    text-decoration: none;
-  }
+  color: ${props => props.color};
+  margin: 0;
 `;

@@ -20,9 +20,4 @@ export default createActions({
   REQUEST_EYE_CATCH: assetId => ({ assetId }),
   SUCCESS_EYE_CATCH: eyeCatch => ({ eyeCatch }),
   FAILURE_EYE_CATCH: error => ({ error }),
-
-  // GitHub Repository一覧
-  REQUEST_GITHUB: payload => ({ payload }),
-  SUCCESS_GITHUB: repos => ({ repos }),
-  FAILURE_GITHUB: error => ({ error }),
 });
