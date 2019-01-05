@@ -28,7 +28,7 @@ export default function Sidebar() {
         <NavItem
           isActive={/^\/contact/.test(window.location.pathname)}
           to="/contact"
-          icon={['fas', 'blog']}
+          icon={['fas', 'envelope']}
         >
           Contact
         </NavItem>

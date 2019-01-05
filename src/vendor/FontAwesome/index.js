@@ -5,6 +5,7 @@ import {
   faPencilAlt,
   faSyncAlt,
   faHome,
+  faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -14,5 +15,6 @@ library.add({
   faPencilAlt,
   faSyncAlt,
   faHome,
+  faEnvelope,
   faGithub,
 });

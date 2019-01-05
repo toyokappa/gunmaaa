@@ -11,7 +11,7 @@ export default function Select(props) {
   ));
 
   return (
-    <Field name={name} value={value} onChange={onChange}>
+    <Field id={name} name={name} value={value} onChange={onChange}>
       {optionTags}
     </Field>
   );
@@ -31,6 +31,7 @@ Select.defaultProps = {
 
 const Field = styled.select`
   font-size: 0.8rem;
+  background-color: white;
   border: 1px solid lightgrey;
   border-radius: 0.25rem;
   height: calc(1.28rem + 0.75rem + 2px);

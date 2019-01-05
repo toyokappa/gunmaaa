@@ -5,7 +5,15 @@ import styled from 'styled-components';
 export default function Textarea(props) {
   const { name, value, rows, onChange } = props;
 
-  return <Field name={name} value={value} rows={rows} onChange={onChange} />;
+  return (
+    <Field
+      id={name}
+      name={name}
+      value={value}
+      rows={rows}
+      onChange={onChange}
+    />
+  );
 }
 
 Textarea.propTypes = {

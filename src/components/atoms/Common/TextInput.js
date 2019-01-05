@@ -5,7 +5,15 @@ import styled from 'styled-components';
 export default function TextInput(props) {
   const { name, value, onChange } = props;
 
-  return <Field type="text" name={name} value={value} onChange={onChange} />;
+  return (
+    <Field
+      type="text"
+      id={name}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  );
 }
 
 TextInput.propTypes = {

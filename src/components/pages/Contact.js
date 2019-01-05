@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
 import BaseLayout from '../templates/BaseLayout';
-import { TextInput, Textarea, Select, Submit } from '../atoms/Common';
+import { Submit } from '../atoms/Common';
+import {
+  NameInput,
+  EmailInput,
+  CategorySelect,
+  ContentInput,
+} from '../molecules/Contact';
 // import postInquiry from '../../apis/awsApi';
 
 export default class Contact extends Component {
@@ -26,9 +32,9 @@ export default class Contact extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     // postInquiry(this.state);
     console.log(this.state);
-    event.preventDefault();
   }
 
   render() {
@@ -37,23 +43,23 @@ export default class Contact extends Component {
       <BaseLayout>
         <h1>Contact</h1>
         <form onSubmit={this.handleSubmit}>
-          <TextInput
+          <NameInput
             name="name"
             value={name}
             onChange={this.handleInputChange}
           />
-          <TextInput
+          <EmailInput
             name="email"
             value={email}
             onChange={this.handleInputChange}
           />
-          <Select
+          <CategorySelect
             name="category"
             value={category}
             onChange={this.handleInputChange}
             options={['メンター依頼', '仕事の依頼', 'その他']}
           />
-          <Textarea
+          <ContentInput
             name="content"
             value={content}
             onChange={this.handleInputChange}
