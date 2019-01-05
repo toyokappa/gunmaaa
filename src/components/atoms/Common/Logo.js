@@ -12,7 +12,7 @@ export default function Logo(props) {
 }
 
 Logo.propTypes = {
-  size: PropTypes.string,
+  size: PropTypes.number,
   color: PropTypes.string,
 };
 
