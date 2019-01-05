@@ -25,6 +25,13 @@ export default function Sidebar() {
         >
           Blog
         </NavItem>
+        <NavItem
+          isActive={/^\/contact/.test(window.location.pathname)}
+          to="/contact"
+          icon={['fas', 'blog']}
+        >
+          Contact
+        </NavItem>
       </Nav>
     </SideContainer>
   );
