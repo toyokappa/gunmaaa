@@ -1,22 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default function Submit(props) {
-  const { value } = props;
-
-  return <Field type="submit" value={value} />;
-}
-
-Submit.propTypes = {
-  value: PropTypes.string,
-};
-
-Submit.defaultProps = {
+const Submit = styled.input.attrs({
+  type: 'submit',
   value: '送信',
-};
-
-const Field = styled.input`
+})`
   color: white;
   background-color: #00bfa5;
   min-width: 7rem;
@@ -35,3 +23,7 @@ const Field = styled.input`
     background-color: #109789;
   }
 `;
+
+const SubmitComponent = ({ ...props }) => <Submit {...props} />;
+
+export default SubmitComponent;

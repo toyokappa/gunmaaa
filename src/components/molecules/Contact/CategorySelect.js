@@ -9,7 +9,7 @@ export default function CategorySelect(props) {
 
   return (
     <CategoryField>
-      <Label for={name}>種別</Label>
+      <Label htmlFor={name}>種別</Label>
       <Select name={name} value={value} options={options} onChange={onChange} />
     </CategoryField>
   );

@@ -2,7 +2,7 @@ import Logo from './Logo';
 import Loading from './Loading';
 import Markdown from './Markdown';
 import NavItem from './NavItem';
-import TextInput from './TextInput';
+import TextField from './TextField';
 import Textarea from './Textarea';
 import Select from './Select';
 import Submit from './Submit';
@@ -12,7 +12,7 @@ export {
   Loading,
   Markdown,
   NavItem,
-  TextInput,
+  TextField,
   Textarea,
   Select,
   Submit,
