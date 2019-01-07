@@ -5,12 +5,14 @@ import styled from 'styled-components';
 import { Textarea } from '../../atoms/Common';
 
 export default function ContentInput(props) {
-  const { name, value, onChange } = props;
+  const { name, value, errors, onChange } = props;
+  const errorTags = errors.map(error => <li>{error}</li>);
 
   return (
     <ContentField>
       <Label for={name}>内容</Label>
-      <Textarea name={name} value={value} onChange={onChange} />
+      <Textarea name={name} value={value} errors={errors} onChange={onChange} />
+      {errors ? <Errors>{errorTags}</Errors> : null}
     </ContentField>
   );
 }
@@ -18,11 +20,13 @@ export default function ContentInput(props) {
 ContentInput.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])),
   onChange: PropTypes.func.isRequired,
 };
 
 ContentInput.defaultProps = {
   value: '',
+  errors: [],
 };
 
 const Label = styled.label`
@@ -35,4 +39,8 @@ const ContentField = styled.div`
     display: block;
     margin-bottom: 1rem;
   }
+`;
+
+const Errors = styled.ul`
+  color: red;
 `;

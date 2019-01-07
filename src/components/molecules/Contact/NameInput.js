@@ -5,12 +5,19 @@ import styled from 'styled-components';
 import { TextInput } from '../../atoms/Common';
 
 export default function NameInput(props) {
-  const { name, value, onChange } = props;
+  const { name, value, errors, onChange } = props;
+  const errorTags = errors.map(error => <li>{error}</li>);
 
   return (
     <NameField>
       <Label for={name}>名前</Label>
-      <TextInput name={name} value={value} onChange={onChange} />
+      <TextInput
+        name={name}
+        value={value}
+        errors={errors}
+        onChange={onChange}
+      />
+      {errors ? <Errors>{errorTags}</Errors> : null}
     </NameField>
   );
 }
@@ -18,11 +25,13 @@ export default function NameInput(props) {
 NameInput.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])),
   onChange: PropTypes.func.isRequired,
 };
 
 NameInput.defaultProps = {
   value: '',
+  errors: [],
 };
 
 const Label = styled.label`
@@ -35,4 +44,8 @@ const NameField = styled.div`
     display: block;
     margin-bottom: 1rem;
   }
+`;
+
+const Errors = styled.ul`
+  color: red;
 `;
