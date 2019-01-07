@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 const Submit = styled.input.attrs({
   type: 'submit',
-  value: '送信',
+  value: '送信する',
 })`
   color: white;
   background-color: #00bfa5;
-  min-width: 7rem;
   font-size: 0.8rem;
   display: inline-block;
   text-align: center;

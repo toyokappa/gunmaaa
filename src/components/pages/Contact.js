@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import BaseLayout from '../templates/BaseLayout';
 import { Submit } from '../atoms/Common';
@@ -8,6 +9,7 @@ import {
   CategorySelect,
   ContentInput,
 } from '../molecules/Contact';
+import ContactImage from '../../images/contact.jpg';
 // import postInquiry from '../../apis/awsApi';
 
 export default class Contact extends Component {
@@ -78,35 +80,61 @@ export default class Contact extends Component {
     const { name, email, category, content, errors } = this.state;
     return (
       <BaseLayout>
-        <h1>Contact</h1>
-        <form onSubmit={this.handleSubmit}>
-          <NameInput
-            name="name"
-            value={name}
-            errors={errors.name}
-            onChange={this.handleInputChange}
-          />
-          <EmailInput
-            name="email"
-            value={email}
-            errors={errors.email}
-            onChange={this.handleInputChange}
-          />
-          <CategorySelect
-            name="category"
-            value={category}
-            options={['メンター依頼', '仕事の依頼', 'その他']}
-            onChange={this.handleInputChange}
-          />
-          <ContentInput
-            name="content"
-            value={content}
-            errors={errors.content}
-            onChange={this.handleInputChange}
-          />
-          <Submit value="確認" />
-        </form>
+        <ContactContainer>
+          <TopImage src={ContactImage} />
+          <ContactContent>
+            <h1>Contact</h1>
+            <form onSubmit={this.handleSubmit}>
+              <NameInput
+                name="name"
+                value={name}
+                errors={errors.name}
+                onChange={this.handleInputChange}
+              />
+              <EmailInput
+                name="email"
+                value={email}
+                errors={errors.email}
+                onChange={this.handleInputChange}
+              />
+              <CategorySelect
+                name="category"
+                value={category}
+                onChange={this.handleInputChange}
+              />
+              <ContentInput
+                name="content"
+                value={content}
+                errors={errors.content}
+                onChange={this.handleInputChange}
+              />
+              <Submit />
+            </form>
+          </ContactContent>
+        </ContactContainer>
       </BaseLayout>
     );
   }
 }
+
+const ContactContainer = styled.div`
+  width: 75%;
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 8px;
+  margin: 1.5rem auto;
+`;
+
+const TopImage = styled.div`
+  display: block;
+  width: 100%;
+  height: 500px;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center center;
+  border-radius: 7px 7px 0 0;
+`;
+
+const ContactContent = styled.div`
+  padding: 0 30px 30px;
+`;

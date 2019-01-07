@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { TextField } from '../../atoms/Common';
+import { Label, TextField } from '../../atoms/Common';
 
 export default function NameInput(props) {
   const { name, value, errors, onChange } = props;
@@ -30,20 +30,17 @@ NameInput.defaultProps = {
 };
 
 const NameField = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 
   & > input {
     display: block;
   }
 `;
 
-const Label = styled.label`
-  display: inline-block;
-  margin-bottom: 0.5rem;
-`;
-
 const Field = styled(TextField)`
+  width: 100%;
   border-color: ${props => (props.errors.length > 0 ? 'red' : 'lightgrey')};
+  box-sizing: border-box;
 `;
 
 const Errors = styled.ul`

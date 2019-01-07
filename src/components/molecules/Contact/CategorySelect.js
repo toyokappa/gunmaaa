@@ -2,15 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Select } from '../../atoms/Common';
+import { Label, Select } from '../../atoms/Common';
 
 export default function CategorySelect(props) {
-  const { name, value, options, onChange } = props;
+  const { name, value, onChange } = props;
 
   return (
     <CategoryField>
       <Label htmlFor={name}>種別</Label>
-      <Select name={name} value={value} options={options} onChange={onChange} />
+      <Field
+        name={name}
+        value={value}
+        options={['仕事の依頼', 'メンター依頼', 'その他']}
+        onChange={onChange}
+      />
     </CategoryField>
   );
 }
@@ -18,8 +23,6 @@ export default function CategorySelect(props) {
 CategorySelect.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string]))
-    .isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -27,15 +30,15 @@ CategorySelect.defaultProps = {
   value: '',
 };
 
-const Label = styled.label`
-  display: inline-block;
-  margin-bottom: 0.5rem;
-`;
-
 const CategoryField = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 
   & > select {
     display: block;
   }
+`;
+
+const Field = styled(Select)`
+  width: 100%;
+  box-sizing: border-box;
 `;
