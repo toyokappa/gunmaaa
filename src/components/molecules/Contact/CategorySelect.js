@@ -33,8 +33,9 @@ const Label = styled.label`
 `;
 
 const CategoryField = styled.div`
+  margin-bottom: 1rem;
+
   & > select {
     display: block;
-    margin-bottom: 1rem;
   }
 `;

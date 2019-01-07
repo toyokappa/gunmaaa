@@ -30,9 +30,10 @@ EmailInput.defaultProps = {
 };
 
 const EmailField = styled.div`
+  margin-bottom: 1rem;
+
   & > input {
     display: block;
-    margin-bottom: 1rem;
   }
 `;
 
@@ -46,5 +47,9 @@ const Field = styled(TextField)`
 `;
 
 const Errors = styled.ul`
+  list-style: none;
   color: red;
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 0.5rem 0 0;
 `;
