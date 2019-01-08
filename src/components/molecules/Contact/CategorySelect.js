@@ -13,7 +13,7 @@ export default function CategorySelect(props) {
       <Field
         name={name}
         value={value}
-        options={['仕事の依頼', 'メンター依頼', 'その他']}
+        options={['仕事の依頼', 'とにかく話したい', 'その他']}
         onChange={onChange}
       />
     </CategoryField>
