@@ -10,7 +10,7 @@ import {
   ContentInput,
 } from '../molecules/Contact';
 import ContactImage from '../../images/contact.jpg';
-// import postInquiry from '../../apis/awsApi';
+import postInquiry from '../../apis/awsApi';
 
 export default class Contact extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ export default class Contact extends Component {
       errors: {},
     };
 
+    this.baseState = this.state;
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,8 +73,18 @@ export default class Contact extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // postInquiry(this.state);
-    this.handleValidation();
+    if (!this.handleValidation()) return;
+
+    // TODO: ちゃんとした遷移を実装する
+    const isConfirm = window.confirm(
+      '以下の内容で送信しますがよろしいですか？'
+    );
+    if (!isConfirm) return;
+
+    postInquiry(this.state);
+    this.setState(this.baseState);
+    // TODO: ちゃんとした遷移を実装する
+    alert('送信しました。お問い合わせありがとうございました。');
   }
 
   render() {

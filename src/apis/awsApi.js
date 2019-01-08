@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const apiBase =
-  'https://lua4kqovyh.execute-api.ap-northeast-1.amazonaws.com/v1/';
+const apiBase = 'https://api.gunmaaa.com/v1/';
 
 export default function postInquiry(params) {
   const url = `${apiBase}inquiries`;
